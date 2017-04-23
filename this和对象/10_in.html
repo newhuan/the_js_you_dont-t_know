@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	let a = function () {
+		this.a = 'a'
+    };
+    Object.defineProperty(a.prototype,'b', {
+        value:'test',
+	    enumberable:false
+    });
+//    a.prototype.b.enumerable = false;
+    let c = new a();
+	for(key in c){
+        console.log(key);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+	div{
+		width: 100px;
+		height: 100px;
+		background-color: aqua;
+		transition: height 1s;
+		animation-duration: 1s;
+		animation-name: showDiv;
+		/*display: none;*/
+	}
+		@keyframes showDiv {
+			from {
+				height:0;
+			}
+			to {
+				height: 100px;
+			}
+		}
+		@keyframes hideDiv {
+			from {
+				height: 100px;
+			}
+			to {
+				height: 0;
+			}
+
+		}
+	</style>
+</head>
+<body>
+<div></div>
+<button>click</button>
+<script>
+	let div = document.querySelector('div');
+	let btn = document.querySelector('button');
+	btn.addEventListener('click', function () {
+	    div.style.animationName='hideDiv';
+	    setTimeout(function () {
+		    div.style.height = '0';
+        },  1000)
+    }, false)
+</script>
+</body>
+</html>

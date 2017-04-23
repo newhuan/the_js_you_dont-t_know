@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+    var myObject = {
+// 给 a 定义一个 getter
+        get a() {
+            return this._a_;//把值存到_a_中 这种表示只是一种惯例 没有任何特殊操作
+        },
+// 给 a 定义一个 setter
+        set a(val) {
+            this._a_ = val * 2;
+        }
+    };
+    myObject.a = 2;
+    console.log(myObject.a); // 4
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+    var myObject = {
+        a: 2,
+        b: 3
+    };
+//    为没有内置@@iterator(Symbol.iterator)的普通对象添加iterator 使普通对象实现for...of遍历
+    Object.defineProperty( myObject, Symbol.iterator, {
+        enumerable: false,
+        writable: false,
+        configurable: true,
+        value: function() {
+            var o = this;
+            var idx = 0;
+            var ks = Object.keys( o );  //keys=>返回对象直接包含的所有可枚举属性组成的数组
+            return {
+                next: function() {//  闭包 => 保存语法组用于信息
+                    return {
+                        value: o[ks[idx++]],
+                        done: (idx > ks.length)
+                    };
+                }
+            };
+        }
+    } );
+//    下面这行这么搞也行
+//    var myObject = {a:2, b:3, [Symbol.iterator]: function() { /* .. */ } }。
+    // 手动遍历 myObject
+    var it = myObject[Symbol.iterator]();
+    it.next(); // { value:2, done:false }
+    it.next(); // { value:3, done:false }
+    it.next(); // { value:undefned, done:true }
+    // 用 for..of 遍历 myObject
+    for (var v of myObject) {
+        console.log( v );
+    }
+
+</script>
+</body>
+</html>

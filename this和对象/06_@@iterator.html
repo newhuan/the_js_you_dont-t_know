@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+    var myArray = [ 1, 2, 3 ];
+    var it = myArray[Symbol.iterator]();
+    console.log(it.next()); // { value:1, done:false }
+    console.log(it.next()); // { value:2, done:false }
+    console.log(it.next()); // { value:3, done:false }
+    console.log(it.next()); // { done:true }
+</script>
+</body>
+</html>
