@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta char set="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+
+	function foo() {
+		console.log(this.a);
+    }
+    var obj1 = {
+	    a:'obj1'
+    };
+    var obj2 = {
+        a:'obj2'
+    };
+    var a = foo.bind(obj1);
+    a();
+    var b = a.bind(obj2);
+    b();
+    var c = foo.bind(obj2);
+    c();
+
+</script>
+</body>
+</html>
