@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var a = new Promise(function (resolve, reject) {
+            return 1;
+        });
+        a.then(function (param) {
+            console.log("test", param);//never run
+        }).catch(function(p){
+            console.log(p);//never run
+        })
+    </script>
+</body>
+</html>

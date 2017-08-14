@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        a = new Promise(function (resolve, reject) {
+            resolve()
+        });
+        a.then(function () {
+            console.log("a");
+        });
+
+        async function test() {
+            //await waitting for the resolve value;
+            let a = await new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve(1);
+                }, 1000)
+            });
+            console.log(a);
+            return a;
+        }
+
+        console.log(test());
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>race</title>
+</head>
+<body>
+    <script>
+        function foo() {
+            return new Promise(function (resolve, reject) {
+                resolve(1);
+            });
+        }
+
+        // 用于超时一个Promise的工具
+        function timeoutPromise(delay) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    reject("Timeout!");
+                }, delay);
+            });
+        }
+
+        // 设置foo()超时
+        Promise.race([//竞速
+                foo(), // 试着开始foo()
+                timeoutPromise(3000) // 给它3秒钟
+            ])
+            .then(
+                function (p) {
+// foo(..)及时完成！
+                    console.log("a", p);
+                },
+                function (err) {
+// 或者foo()被拒绝，或者只是没能按时完成
+// 查看err来了解是哪种情况
+                    console.log(err);
+                }
+            );
+    </script>
+</body>
+</html>

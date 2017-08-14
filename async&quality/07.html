@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var p1 = Promise.resolve(42);
+        var p2 = Promise.resolve(p1);//Promise.resolve()接收一个Promise对象作为参数的时候，会直接返回这个Promise对象
+        //        从 Promise.resolve(..) 得到的是一个真正的 Promise，是一个可以信任的值。
+        console.log(p1 === p2);
+
+        //可以保证调用.then的一定是一个Promise对象
+        Promise.resolve(foo(42))
+            .then(function (v) {
+                console.log(v);
+            });
+    </script>
+</body>
+</html>

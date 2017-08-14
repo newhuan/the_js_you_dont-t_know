@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var a = new Promise(function (resolve, reject) {
+            resolve(1);
+        });
+        var b = new Promise(function (resolv, reject) {
+                resolv(2);
+            });
+        var c = Promise.all([a,b]);
+        c.then(function (params) {
+            console.log(params);
+        });
+        c.then(function (params) {
+            console.log(params[0] + params[1]);
+        });
+
+    </script>
+</body>
+</html>

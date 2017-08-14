@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var a = new Promise(function (resolve, reject) {
+            resolve(1)
+        });
+        a.then(function (p) {
+//            return p * 2
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve(p * 3)
+                }, 2000);
+            })
+        }).then(function (q) {
+            console.log(q);
+        })
+
+
+    </script>
+    
+</body>
+</html>

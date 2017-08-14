@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+//        没有执行生成器 *foo() ，而只是构造了一个迭代器（iterator）
+        // Object.keys(..) 并不包含来自于 [[Prototype]] 链
+//上的属性，而 for..in 则包含
+//内存分配、垃圾收集和作用域访问   对 JavaScript 性能影响最大的因素
+//非关键路劲上，纠结于细微的性能提升都是过早优化，重要的是程序关键路径上的性能优化，但性能并不是唯一要考虑的因素。在性能方面大体相
+//似的几个选择中，可读性应该是另外一个重要的考量因素。
+//但是，更好的优化（比如性能提高数倍及以上）一定是整体的优化，Amdahl定律。
+
+// Benchmark.js 库
+//jsPerf.com 是很好的网站
+
+//numberify中parseInt最快
+//数字字符串比较中x + "" === y + "";最快。
+//尾调用优化 return 后的表达式是一个单独的函数调用，一般用于解决递归算法被js引擎限制调用栈深度的问题。
+//尾调用优化可以使尾部的函数调用使用当前函数正在使用的栈帧而不是重新创建一个新的栈帧。
+
+
+//
+
+//有些数字操作（如数位操作）只适用于 32 位数字，
+//所以这些操作中数字的安全范围就要小很多，变成从 Math.pow(-2,31) （ -2147483648 ，
+//约 － 21 亿）到 Math.pow(2,31) - 1 （ 2147483647 ，约 21 亿）。
+//a | 0 可以将变量 a 中的数值转换为 32 位有符号整数，
+//ES6 中新加入了一个工具方法 Object.is(..) 来判断两个值是否绝对相等，可以用来处理
+//上述所有的特殊情况：NaN 和 +0，-0
+//尽量不要使用复杂的运算符按优先级结合的表达式，如果不得不写，使用括号提高可读性
+//尽量不要使用 arguments ，如果非用不可，也切勿同时使用 arguments
+//和其对应的命名参数。
+//switch 使用 === 匹配，特殊用法如下：
+//var a = "hello world";
+//var b = 10;
+//switch (true) {
+//case (a || b == 10)://和true做 === 匹配
+// 永远执行不到这里
+//break;
+//default:
+//console.log( "Oops" );
+//}
+
+//Promise.resolve(thenable)//保证了返回的一定是一个promise，提供了一种可信任的机制
+//Web Worker 、SIMD、asm.js => 三种提高js性能的方式
+//Web Worker: 适用于把长时间的或资源密集型的任务卸载到不同的线程
+//中，以提高主 UI 线程的响应性
+
+//SIMD 打算把 CPU 级的并行数学运算映射到 JavaScript API，以获得高性能的数据并行运
+//算，比如在大数据集上的数字处理
+
+
+//asm.js 描述了 JavaScript 的一个很小的子集，它避免了 JavaScript 难以优化的部分
+//（比如垃圾收集和强制类型转换），并且让 JavaScript 引擎识别并通过激进的优化运行这样
+//的代码
+
+
+
+        let DataCache = (function () {
+            function Cache(argument) {
+                this.testList = [];
+
+            };
+
+            Cache.prototype.setTestList = function (list) {
+                this.testList = list;
+            };
+
+            Cache.prototype.getTestList = function () {
+                return this.testList;
+            }
+
+
+            return Cache;
+        })();
+        console.log(new DataCache());
+    </script>
+</body>
+</html>
